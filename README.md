@@ -1,4 +1,4 @@
-# Financial Portofolio Management with Reinforcement Learning
+Financial Portofolio Management with Reinforcement Learning
 
 # DQN vs PPO in Algorithmic Trading: A Reinforcement Learning Comparison
 
