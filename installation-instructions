@@ -1,0 +1,18 @@
+#Installation Instructions
+python -m venv env_rl
+source env_rl/bin/activate  # On Linux/Mac
+env_rl\Scripts\activate     # On Windows
+
+#Install Dependencies
+pip install -r requirements.txt
+
+#Run the code
+python file_name.py
+
+#Notes:
+- Gymnasium is the latest version of OpenAI’s Gym framework.
+- Gym-AnyTrading provides the trading environment used in your implementation.
+- Stable-Baselines3 is required for using DQN and PPO models.
+- Matplotlib is used for plotting trading strategies.
+- NumPy and Pandas handle financial data and market trends.
+- Torch is required for the deep learning models in Stable-Baselines3.
