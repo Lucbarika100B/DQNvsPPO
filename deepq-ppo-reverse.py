@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from stable_baselines3 import DQN, PPO
 from gymnasium.envs.registration import register
 
-#  Enregistrement de l'environnement
+#  Register environnement
 try:
     register(
         id="stocks-v0",
@@ -20,15 +20,15 @@ try:
 except Exception as e:
     print("⚠️ Environnement déjà enregistré :", e)
 
-#  Génération des données boursières
+# Generate random market data
 np.random.seed(42)
 data_size = 500
 
-# GOLD (Actif stable)
+# GOLD - Stable Asset
 gold_prices = np.cumsum(np.random.randn(data_size) * 2 + 1000)
 df_gold = pd.DataFrame(gold_prices, columns=["Close"])
 
-# ⚡ BITCOIN (Actif très volatil)
+#BITCOIN - Volatile asset
 bitcoin_prices = np.cumsum(np.random.randn(data_size) * 200 + 30000)
 df_bitcoin = pd.DataFrame(bitcoin_prices, columns=["Close"])
 
@@ -80,7 +80,7 @@ def plot_trading_strategy(models, envs, titles, colors, assets):
         if "BITCOIN" in title:
             ax.set_yscale("log")
 
-        # 🔥 Annotation des actifs
+        #Assets annotations
         asset_name = "BITCOIN" if "DQN" in title else "GOLD"
         ax.annotate(f"Actif: {asset_name}", xy=(0.05, 0.9), xycoords='axes fraction', fontsize=12, fontweight='bold', color="black")
 
@@ -94,7 +94,7 @@ def plot_trading_strategy(models, envs, titles, colors, assets):
 plot_trading_strategy(
     [dqn_model, ppo_model],
     [env_dqn, env_ppo],
-    ["Stratégie DQN (BITCOIN)", "Stratégie PPO (GOLD)"],  # ✅ Inversion ici
+    ["Stratégie DQN (BITCOIN)", "Stratégie PPO (GOLD)"],  #Inversion 
     ["coolwarm", "plasma"],
     [df_bitcoin, df_gold]
 )
